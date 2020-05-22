@@ -1,0 +1,15 @@
+.container
+{
+    position: absolute;
+    top:20%;
+    left: 30%;
+}
+
+input
+{
+    width: 50%;
+}
+.alert
+{
+    width: 50%;
+}

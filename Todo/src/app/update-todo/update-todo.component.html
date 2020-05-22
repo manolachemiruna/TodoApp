@@ -1,0 +1,47 @@
+<div class="container">
+    <form #TodoForm="ngForm">
+     <div class="row">
+        <div class="col-md-12 mb-2">
+          <label>Description</label>
+          <input [(ngModel)]="description" ng-init="description='description'"  name="description" type="text" class="form-control" required >
+        </div>
+      </div>
+
+      <div class="row">
+       <div class="col-md-12 mb-2">
+       <label>Date</label>
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" 
+                   name="dp" [(ngModel)]="targetDate" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                <i class="fas fa-calendar-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+       </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <label>  </label>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Is your todo done?</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button ngbDropdownItem id="true" (click)="setTrue()">true</button>
+                <button ngbDropdownItem id="false" (click)="setFalse()">false</button>
+              </div>
+              </div>
+       </div>
+      </div>
+        <div class="row">
+            <div class="col-md-12">
+              <button name='Button' class="btn btn-success" type="submit" (click)="update()">Update Todo</button>
+            </div>
+          </div>
+        </form>
+        </div>

@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">To Do Reminder</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a *ngIf="isLoggedIn()" class="nav-link" routerLink="/home">Home<span class="sr-only">(current)</span></a>
+        </li>
+          <li class="nav-item active">
+            <ng-template #content let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Todos of the day</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <table class="table">
+                  <thead>
+                  <tr>
+                      <th>Description</th>
+                      <th>Is Completed?</th>
+                      <th>Change Status</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let todo of todos">
+                      <td>{{todo.description}}</td>
+                      <td>{{todo.done}}</td>
+                      <th><button class="btn btn-success" (click)="changeStatus(todo)">Change status</button></th>
+                      </tr>
+                  </tbody>
+                  </table>
+
+              </div>
+            </ng-template>
+            
+            <a *ngIf="isLoggedIn()" class="nav-link" (click)="open(content)">Today Todos<span class="sr-only">(current)</span></a>
+          </li>
+      </ul>
+      <ul class="navbar-nav navbar-collapse justify-content-end">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/register">Register<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/login">Login<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="isLoggedIn()" class="nav-link" (click)="loggedOut()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
